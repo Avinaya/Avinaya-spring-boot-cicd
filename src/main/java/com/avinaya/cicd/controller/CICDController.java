@@ -8,6 +8,7 @@ public class CICDController {
 
     @GetMapping()
     public String test(){
+
         return "Hello from cicd";
     }
 }
