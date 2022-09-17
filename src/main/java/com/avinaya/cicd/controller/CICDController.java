@@ -14,4 +14,9 @@ public class CICDController {
     public String testCi(){
         return "Hello from Test api";
     }
+
+    @GetMapping("/test1")
+    public String testCiCD(){
+        return "Hello Avinaya from CICD";
+    }
 }
