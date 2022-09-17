@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: springboot-deployment
+  namespace: avinaya
+  labels:
+    app: springboot-api
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: springboot-api
+  template:
+    metadata:
+      labels:
+        app: springboot-api
+    spec:
+      containers:
+        - name: springboot-api
+          image: avinaya123/simple-cicd:latest
+          ports:
+            - containerPort: 8080
+      imagePullSecrets:
+        - name: java-secret
+
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: springboot-api-service
+  namespace: avinaya
+spec:
+  selector:
+    app: springboot-api
+  type: LoadBalancer
+  ports:
+    - protocol: TCP
+      port: 8082
+      targetPort: 8080
+      nodePort: 31110
+
+#kubectl create secret docker-registry java-secret --docker-server=https://index.docker.io/v1/ --docker-username=avinaya123 --docker-password=Dark@_123 --docker-email=avinayaacharya123@gmail.com --ns=avinaya
+#kubectl port-forward svc/springboot-api-service 8082:8082 --address 0.0.0.0 -n avinaya
+

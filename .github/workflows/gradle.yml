@@ -48,6 +48,8 @@ jobs:
       run: |
         pwd
         cd
+        kubectl set image deployment/springboot-deployment springboot-api=avinaya123/simple-cicd:latest -n avinaya
         ls
+
         
           
