@@ -50,7 +50,6 @@ jobs:
         cd
         ls
         kubectl set image deployment/springboot-deployment springboot-api=avinaya123/simple-cicd:${{ github.sha }} -n avinaya
-        kubectl port-forward svc/springboot-api-service 8082:8082 --address 0.0.0.0 -n avinaya
         
 
         
