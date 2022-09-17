@@ -8,7 +8,10 @@ public class CICDController {
 
     @GetMapping()
     public String test(){
-
         return "Hello from cicd";
+    }
+    @GetMapping("/test")
+    public String testCi(){
+        return "Hello from Test api";
     }
 }
