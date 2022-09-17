@@ -34,7 +34,7 @@ jobs:
       uses: mr-smithers-excellent/docker-build-push@v5
       with:
         image: avinaya123/simple-cicd
-        tags: 123
+        tags: ${GITHUB_REF:10}
         registry: docker.io
         dockerfile: Dockerfile
         username: ${{ secrets.DOCKER_USERNAME }}
@@ -48,7 +48,7 @@ jobs:
       run: |
         pwd
         cd
-        kubectl set image deployment/springboot-deployment springboot-api=avinaya123/simple-cicd:123 -n avinaya
+        kubectl set image deployment/springboot-deployment springboot-api=avinaya123/simple-cicd:${{ github.sha }} -n avinaya
         ls
 
         
